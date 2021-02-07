@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:adsteel/redd.git
+  revision: 93f0eb2284a52162e2ddc5e1e91b0c8f7e329629
+  specs:
+    redd (0.9.0.pre.3)
+      http (~> 2.2)
+      lazy_lazer (~> 0.8.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -81,16 +89,32 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     diff-lcs (1.4.4)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    http (2.2.2)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 1.0.1)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (1.0.3)
+    http_parser.rb (0.6.0)
     i18n (1.8.8)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
+    lazy_lazer (0.8.1)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -203,6 +227,9 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -230,12 +257,14 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   capybara (>= 2.15)
   database_cleaner
+  dotenv-rails
   factory_bot
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pry
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
+  redd!
   rspec-rails
   sass-rails (>= 6)
   selenium-webdriver
