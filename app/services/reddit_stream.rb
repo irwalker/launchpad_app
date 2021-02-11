@@ -1,4 +1,6 @@
 class RedditStream
+  TASK_NAME = 'reddit_stream'.freeze
+
   attr_reader :client, :subreddit_name
   private :client, :subreddit_name
 
@@ -8,8 +10,19 @@ class RedditStream
   end
 
   def stream
-    subreddit.comments.stream do |comment|
-      save_comment(comment)
+    if TaskRunner.task_running?(TASK_NAME, subreddit_name)
+      Rails.logger.info("#{TASK_NAME}:#{subreddit_name} already running")
+      return
+    end
+
+    begin
+      task_runner.update(running: true)
+
+      subreddit.comments.stream do |comment|
+        save_comment(comment)
+      end
+    ensure
+      task_runner.update(running: false)
     end
   end
 
@@ -30,5 +43,9 @@ class RedditStream
 
   def subreddit
     client.subreddit(subreddit_name)
+  end
+
+  def task_runner
+    @task_runner ||= TaskRunner.find_by(task_name: TASK_NAME, feed_name: subreddit_name)
   end
 end
