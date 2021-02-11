@@ -1,9 +1,8 @@
 namespace :launchpad do
   namespace :process do
     desc 'Process downloaded comments'
-    # TODO: use active job instead?
     task comments: :environment do
-
+      CommentProcessor.new.process_comments
     end
   end
 end

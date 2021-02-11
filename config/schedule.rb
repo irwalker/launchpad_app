@@ -8,3 +8,7 @@ every 5.minutes do
   runner "RedditStream.stream('finance')"
   runner "RedditStream.stream('stock_picks')"
 end
+
+every 30.minutes do
+  rake 'launchpad:process:comments'
+end
