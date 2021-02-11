@@ -8,15 +8,38 @@ RSpec.describe CommentProcessor do
 
     let!(:instrument) { create(:instrument) }
 
-    before do
-      5.times { create(:comment) }
+
+
+    context 'when a single instrument is mentioned several times' do
+      before { 5.times { create(:comment) } }
+
+      it 'should process 5 mentions of GME' do
+        subject
+
+        mentions = InstrumentMention.where(instrument_id: instrument.id)
+        expect(mentions.size).to eq(5)
+      end
     end
 
-    it 'should process 5 mentions of GME' do
-      subject
+    context 'when multiple instruments are mentioned' do
+      before do
+        create(
+          :comment,
+          body: 'I like GME but also F and others like BB'
+        )
+      end
 
-      mentions = InstrumentMention.where(instrument_id: instrument.id)
-      expect(mentions.size).to eq(5)
+      it 'should process mentions for 3 different instruments' do
+        subject
+
+        mentions = InstrumentMention.all
+        expect(mentions.size).to eq(3)
+
+        %w(GME F BB).each do |ticker|
+          mention = mentions.find { |m| m.instrument.short == ticker }
+          expect(mention).to_not be nil
+        end
+      end
     end
   end
 end
