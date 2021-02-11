@@ -9,6 +9,10 @@ class RedditStream
     @client = RedditClient.instance.client
   end
 
+  def self.stream(subreddit_name)
+    new(subreddit_name).stream
+  end
+
   def stream
     if TaskRunner.task_running?(TASK_NAME, subreddit_name)
       Rails.logger.info("#{TASK_NAME}:#{subreddit_name} already running")
