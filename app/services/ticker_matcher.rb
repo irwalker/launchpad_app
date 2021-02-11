@@ -1,7 +1,7 @@
 class TickerMatcher
   def self.extract_tickers(text)
-    matches = text.scan(%r{\$?([A-Z]{1,4})\W})
-    matches.flatten.uniq - not_real_tickers
+    matches = text.scan(%r{\$?([A-Z]{1,4})(\W|\z)})
+    (matches.flatten.compact.uniq - not_real_tickers).reject(&:blank?)
   end
 
   def self.not_real_tickers

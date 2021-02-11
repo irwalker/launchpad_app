@@ -30,5 +30,11 @@ RSpec.describe TickerMatcher do
 
       it { is_expected.to eq([]) }
     end
+
+    context 'with ticker at the end of the sentence' do
+      let(:text) { 'I like GME but also F and others like BB' }
+
+      it { is_expected.to eq(%w(GME F BB)) }
+    end
   end
 end
