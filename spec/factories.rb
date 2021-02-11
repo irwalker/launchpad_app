@@ -16,6 +16,7 @@ FactoryBot.define do
     name { 'Gamestop' }
     description { 'This stock is going to the moon 100%' }
     verified { true }
+    invalid_ticker { false }
   end
 
   factory :task_runner do

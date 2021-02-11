@@ -24,6 +24,7 @@ class CommentProcessor
 
   def save_ticker_mention(comment, ticker)
     instrument = Instrument.find_or_create_by(short: ticker)
+    return if instrument.invalid_ticker?
 
     InstrumentMention.create(
       instrument_id: instrument.id,

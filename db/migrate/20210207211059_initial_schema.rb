@@ -31,7 +31,7 @@ class InitialSchema < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :description
       t.boolean :verified, default: false
-      t.boolean :invalid, default: false
+      t.boolean :invalid_ticker, default: false
 
       t.index :short
     end

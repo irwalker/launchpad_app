@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_02_07_211059) do
     t.string "name"
     t.text "description"
     t.boolean "verified", default: false
-    t.boolean "invalid", default: false
+    t.boolean "invalid_ticker", default: false
     t.index ["short"], name: "index_instruments_on_short"
   end
 

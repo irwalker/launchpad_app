@@ -41,5 +41,18 @@ RSpec.describe CommentProcessor do
         end
       end
     end
+
+    context 'when a known invalid instrument is mentioned' do
+      before do
+        create(:instrument, short: 'GOOO', invalid_ticker: true)
+        create(:comment, body: 'lets GOOO baby')
+      end
+
+      it 'should not create a mention' do
+        subject
+
+        expect(InstrumentMention.all.size).to eq(0)
+      end
+    end
   end
 end
