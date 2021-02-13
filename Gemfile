@@ -31,7 +31,7 @@ gem 'whenever', require: false
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'redd', git: 'git@github.com:adsteel/redd.git'
+gem 'redd', git: 'https://github.com/adsteel/redd.git'
 
 group :development, :test do
   gem 'dotenv-rails'

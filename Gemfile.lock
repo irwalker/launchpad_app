@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:adsteel/redd.git
+  remote: https://github.com/adsteel/redd.git
   revision: 93f0eb2284a52162e2ddc5e1e91b0c8f7e329629
   specs:
     redd (0.9.0.pre.3)
