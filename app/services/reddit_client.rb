@@ -6,10 +6,10 @@ class RedditClient
   def initialize
     @client = Redd.it(
       user_agent: 'Redd:RandomBot:v1.0.0 (by /u/Mustermind)',
-      client_id: ENV['CLIENT_ID'],
-      secret: ENV['SECRET'],
-      username: ENV['USERNAME'],
-      password: ENV['PASSWORD']
+      client_id: Rails.application.credentials.reddit_client_id,
+      secret: Rails.application.credentials.reddit_client_secret,
+      username: Rails.application.credentials.reddit_username,
+      password: Rails.application.credentials.reddit_password
     )
   end
 end
